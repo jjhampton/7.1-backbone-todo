@@ -1,7 +1,7 @@
 var TaskModel = Backbone.Model.extend({
   defaults: function () {
     return {
-        "isComplete": "false",
+        "isComplete": false,
         "created_at": new Date()
     };
   },
