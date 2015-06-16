@@ -16,6 +16,11 @@ export default Backbone.View.extend({
   addTask: function(e) {
     if (e.which === 13) {
       console.log("PRESSED");
+      var taskName = this.$('#new-todo').val();
+      this.collection.create({
+        "name": taskName,
+        "isComplete": false
+      });
     }
   }
 
