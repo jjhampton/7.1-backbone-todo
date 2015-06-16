@@ -13,5 +13,4 @@ var TasksCollection =  Backbone.Collection.extend({
   comparator: "created_at"
 });
 
-
 export default {TasksCollection};

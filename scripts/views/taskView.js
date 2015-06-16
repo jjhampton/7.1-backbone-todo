@@ -3,7 +3,8 @@ export default Backbone.View.extend ({
   tagName: 'li',
 
   events: {
-    'click .toggle': 'toggleCompleted'
+    'click .toggle': 'toggleCompleteStatus',
+    'click .destroy': 'deleteTask'
   },
 
   initialize: function() {
@@ -14,10 +15,14 @@ export default Backbone.View.extend ({
     this.$el.html(this.template(this.model.toJSON()));
   },
 
-  toggleCompleted: function() {
+  toggleCompleteStatus: function() {
     var completedStatus = this.model.get('isComplete');
     this.$el.toggleClass('completed', !completedStatus);
     this.model.set('isComplete', !completedStatus);
+  },
+
+  deleteTask: function() {
+    console.log("DELETE CLICKED");
   }
 
 });
