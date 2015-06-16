@@ -13,8 +13,10 @@ export default Backbone.View.extend({
     this.$el.html(this.template());
   },
 
-  addTask: function() {
-    console.log("PRESSED");
+  addTask: function(e) {
+    if (e.which === 13) {
+      console.log("PRESSED");
+    }
   }
 
 });
