@@ -23,6 +23,14 @@ export default Backbone.View.extend ({
 
   deleteTask: function() {
     console.log("DELETE CLICKED");
+    this.model.destroy({
+      success: function(){
+        console.log("destroy successful");
+      },
+      error: function() {
+        console.log("destroy NOT successful");
+      }
+    });
   }
 
 });

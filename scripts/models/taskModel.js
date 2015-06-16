@@ -4,7 +4,8 @@ var TaskModel = Backbone.Model.extend({
         "isComplete": "false",
         "created_at": new Date()
     };
-  }
+  },
+  idAttribute: '_id'
 });
 
 var TasksCollection =  Backbone.Collection.extend({
