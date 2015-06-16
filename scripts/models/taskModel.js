@@ -9,7 +9,8 @@ var TaskModel = Backbone.Model.extend({
 
 var TasksCollection =  Backbone.Collection.extend({
   url: "http://tiny-lasagna-server.herokuapp.com/collections/hamptonposts",
-  model: TaskModel
+  model: TaskModel,
+  comparator: "created_at"
 });
 
 
