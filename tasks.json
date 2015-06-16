@@ -1,12 +1,14 @@
 [
-{
-name: "walk dog",
-isComplete: false
-},
-name: "buy groceries",
-isComplete: false
-},
-name: "call Mom",
-isComplete: false
-}
+  {
+    "name": "walk dog",
+    "isComplete": false
+  },
+  {
+    "name": "buy groceries",
+    "isComplete": false
+  },
+  {
+    "name": "call Mom",
+    "isComplete": false
+  }
 ]
