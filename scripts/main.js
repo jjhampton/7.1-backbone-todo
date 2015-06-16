@@ -7,9 +7,15 @@ import {TasksCollection} from './models/taskModel';
 
   $(document).ready(function(){
 
-    $('#header').append(new CreateTaskView().el);
-
     var tasksCollection = new TasksCollection();
+
+    var createTaskView = new CreateTaskView({
+      collection: tasksCollection
+    });
+
+    $('#header').append(createTaskView.el);
+
+
 
     tasksCollection.fetch().then(function() {
       var tasksListView = new TasksListView({
