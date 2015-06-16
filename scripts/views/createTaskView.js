@@ -25,8 +25,7 @@ export default Backbone.View.extend({
       else
       {
         this.collection.create({
-          "name": taskName.toUpperCase(),
-          "isComplete": false
+          "name": taskName.toUpperCase()
         });
         console.log("promise");
         taskInput.attr("placeholder", "Enter new task here.");
