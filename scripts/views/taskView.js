@@ -4,7 +4,7 @@ export default Backbone.View.extend ({
 
   events: {
     'click .toggle': 'toggleCompleteStatus',
-    'click .destroy': 'deleteTask'
+    'click .destroy': 'deleteTask',
   },
 
   initialize: function() {
@@ -14,7 +14,7 @@ export default Backbone.View.extend ({
   render: function() {
     var completedStatus = this.model.get('isComplete');
     if (completedStatus) {
-      this.$el.addClass('completed');   
+      this.$el.addClass('completed');
     }
 
     this.$el.html(this.template(this.model.toJSON()));
@@ -37,11 +37,6 @@ export default Backbone.View.extend ({
   },
 
   deleteTask: function() {
-    // var mappedCollection = _.map(this.collection.toJSON(), function(task) {
-    //   return task.isComplete;
-    // });
-    // var areCompletedTodos = _.contains(mappedCollection, true);
-
     this.model.destroy({
       success: function(){
         console.log("destroy successful");
@@ -51,5 +46,4 @@ export default Backbone.View.extend ({
       }
     });
   }
-
 });
