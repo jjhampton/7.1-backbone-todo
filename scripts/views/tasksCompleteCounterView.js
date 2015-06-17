@@ -9,20 +9,15 @@ export default Backbone.View.extend({
   },
 
   render: function() {
-    this.getCompletedTodoCount();
-    this.$el.html(this.template());
+    this.$el.html(this.template({
+      tasksCompleted: this.getCompletedTodoCount()
+    }));
   },
 
   getCompletedTodoCount: function() {
-    // var mappedCollection = _.map(this.collection.toJSON(), function(task) {
-    //   return task.isComplete;
-    // });
-    // var areAnyTodosComplete = _.contains(mappedCollection, true);
-    // this.model.set('areAnyTodosComplete', areAnyTodosComplete);
-    console.log(this.collection.toJSON());
     var count = _.filter(this.collection.toJSON(), function(task) {
       return task.isComplete === true;
     });
-    console.log(count);
+    return count.length;
   }
 });

@@ -12,6 +12,11 @@ export default Backbone.View.extend ({
   },
 
   render: function() {
+    var completedStatus = this.model.get('isComplete');
+    if (completedStatus) {
+      this.$el.addClass('completed');   
+    }
+
     this.$el.html(this.template(this.model.toJSON()));
   },
 
@@ -19,36 +24,32 @@ export default Backbone.View.extend ({
     var completedStatus = this.model.get('isComplete');
     this.$el.toggleClass('completed', !completedStatus);
     this.model.set('isComplete', !completedStatus);
+    this.model.save(null,{
+      dataType: 'text',
+      success: function(model,response) {
+        console.log("save successful");
+      },
+      error: function(model,response) {
+        console.log("save NOT successful" + response.toJSON());
+      }
+    });
+    console.log("YA");
   },
 
   deleteTask: function() {
-    console.log(this.collection.toJSON());
-    //map collection from the isComplete value
-    var mappedCollection = _.map(this.collection.toJSON(), function(task) {
-      return task.isComplete;
+    // var mappedCollection = _.map(this.collection.toJSON(), function(task) {
+    //   return task.isComplete;
+    // });
+    // var areCompletedTodos = _.contains(mappedCollection, true);
+
+    this.model.destroy({
+      success: function(){
+        console.log("destroy successful");
+      },
+      error: function() {
+        console.log("destroy NOT successful");
+      }
     });
-    console.log(mappedCollection);
-    var areCompletedTodos = _.contains(mappedCollection, true);
-    console.log(areCompletedTodos);
-
-    // var areCompletedTodos = _.chain(this.collection.toJSON())
-    //   .map(function(task) {
-    //     return task.isComplete;
-    //   })
-    //   .contains(true);
-    // UNABLE TO GET UNDERSCORE CHAIN TO WORK
-
-    console.log(areCompletedTodos);
-    if (areCompletedTodos) {
-      this.model.destroy({
-        success: function(){
-          console.log("destroy successful");
-        },
-        error: function() {
-          console.log("destroy NOT successful");
-        }
-      });
-    }
   }
 
 });
