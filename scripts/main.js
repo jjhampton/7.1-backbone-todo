@@ -1,5 +1,6 @@
 import TasksListView from './views/tasksListView';
 import CreateTaskView from './views/createTaskView';
+import TasksCompleteCounterView from './views/tasksCompleteCounterView';
 import {TasksCollection} from './models/taskModel';
 
 (function(){
@@ -22,6 +23,12 @@ import {TasksCollection} from './models/taskModel';
         collection: tasksCollection
       });
       $('#main').prepend(tasksListView.el);
+
+      var tasksCompleteCounterView = new TasksCompleteCounterView({
+        collection: tasksCollection
+      });
+      $('#footer').append(tasksCompleteCounterView.el);
+
     });
   });
 })();
