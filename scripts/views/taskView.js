@@ -22,15 +22,33 @@ export default Backbone.View.extend ({
   },
 
   deleteTask: function() {
-    console.log("DELETE CLICKED");
-    this.model.destroy({
-      success: function(){
-        console.log("destroy successful");
-      },
-      error: function() {
-        console.log("destroy NOT successful");
-      }
+    console.log(this.collection.toJSON());
+    //map collection from the isComplete value
+    var mappedCollection = _.map(this.collection.toJSON(), function(task) {
+      return task.isComplete;
     });
+    console.log(mappedCollection);
+    var areCompletedTodos = _.contains(mappedCollection, true);
+    console.log(areCompletedTodos);
+
+    // var areCompletedTodos = _.chain(this.collection.toJSON())
+    //   .map(function(task) {
+    //     return task.isComplete;
+    //   })
+    //   .contains(true);
+    // UNABLE TO GET UNDERSCORE CHAIN TO WORK
+
+    console.log(areCompletedTodos);
+    if (areCompletedTodos) {
+      this.model.destroy({
+        success: function(){
+          console.log("destroy successful");
+        },
+        error: function() {
+          console.log("destroy NOT successful");
+        }
+      });
+    }
   }
 
 });
