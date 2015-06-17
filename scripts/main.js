@@ -27,7 +27,7 @@ import {TasksCollection} from './models/taskModel';
       var tasksCompleteCounterView = new TasksCompleteCounterView({
         collection: tasksCollection
       });
-      $('#footer').append(tasksCompleteCounterView.el);
+      $('.footer').append(tasksCompleteCounterView.el);
 
     });
   });
